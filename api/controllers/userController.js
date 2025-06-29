@@ -1,3 +1,4 @@
+
 import User from '../models/User.js';
 import mongoose from 'mongoose';
 
@@ -33,10 +34,6 @@ res.send({
     }
 });
 
-
-
-
-
     }catch(error){
         res.send({
             messsage: "error creating user",
@@ -46,4 +43,50 @@ res.send({
 
 }
 
-export {createUser};
+const login = async(req, res) => {
+  const { email, password } = req.body;
+  
+
+  if (!email || !password) {
+    return res.status(400).send({
+      message: "email and password are required",
+      error: "email and password are required"
+    });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+    
+
+    if (user && user.password === password) {
+      
+      return res.status(200).send({
+        message: "user logged in successfully",
+        user: {
+          id: user._id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+        }
+      });
+    } else {
+      console.log("Login failed ❌ - Wrong email or password");
+      return res.status(400).send({
+        message: "invalid email or password",
+        error: "invalid email or password"
+      });
+    }
+
+  } catch (error) {
+    console.log("Login error ❌", error.message);
+    return res.status(400).send({
+      message: "error logging in user",
+      error: error.message
+    });
+  }
+};
+
+
+
+
+ export {createUser, login }

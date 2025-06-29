@@ -9,10 +9,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 connectDB();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use(express.json()); // Middleware to parse JSON bodies
 
+
+
+app.use('/api', userRoutes);
 
 
 app.listen(PORT, () => {
