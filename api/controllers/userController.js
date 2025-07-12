@@ -18,6 +18,7 @@ const createUser = async (req, res) => {
     const user = new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
@@ -29,6 +30,7 @@ const createUser = async (req, res) => {
         id: newUser._id,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
+        username: newUser.username,
         email: newUser.email,
       },
     });
@@ -65,6 +67,7 @@ const login = async (req, res) => {
           id: user._id,
           firstName: user.firstName,
           lastName: user.lastName,
+          username: user.username,
           email: user.email,
         },
       });
