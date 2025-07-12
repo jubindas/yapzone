@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
-function Signup() {
+function Login() {
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    username: "",
     email: "",
     password: "",
   });
@@ -18,43 +15,16 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with data:", formData);
+    console.log("Login submitted with data:", formData);
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
-          Sign Up
+          Login
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="firstname"
-            value={formData.firstname}
-            onChange={handleChange}
-            placeholder="First Name"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            name="lastname"
-            value={formData.lastname}
-            onChange={handleChange}
-            placeholder="Last Name"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="Username"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
           <input
             type="email"
             name="email"
@@ -77,7 +47,7 @@ function Signup() {
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
           >
-            Sign Up
+            Login
           </button>
         </form>
       </div>
@@ -85,4 +55,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;
