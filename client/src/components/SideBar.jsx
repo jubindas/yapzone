@@ -11,38 +11,38 @@ import {
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 
-const SideBar = () => {
+const SideBar = ({ setActiveTab }) => {
   const navItems = [
-    { name: "Home", path: "/", icon: <HomeIcon className="w-5 h-5" /> },
-    { name: "Create", path: "/create", icon: <PlusIcon className="w-5 h-5" /> },
+    { name: "Home", icon: <HomeIcon className="w-5 h-5" /> },
+    { name: "Create", icon: <PlusIcon className="w-5 h-5" /> },
     {
       name: "Feed",
-      path: "/feed",
+
       icon: <NewspaperIcon className="w-5 h-5" />,
     },
     {
       name: "Profile",
-      path: "/profile",
+
       icon: <UserIcon className="w-5 h-5" />,
     },
     {
       name: "Messages",
-      path: "/messages",
+
       icon: <ChatBubbleLeftRightIcon className="w-5 h-5" />,
     },
     {
       name: "Notifications",
-      path: "/notifications",
+
       icon: <BellIcon className="w-5 h-5" />,
     },
     {
       name: "Settings",
-      path: "/settings",
+
       icon: <Cog6ToothIcon className="w-5 h-5" />,
     },
     {
       name: "Logout",
-      path: "/logout",
+
       icon: <ArrowLeftOnRectangleIcon className="w-5 h-5" />,
     },
   ];
@@ -52,13 +52,13 @@ const SideBar = () => {
       <ul className="space-y-4">
         {navItems.map((item) => (
           <li key={item.name}>
-            <Link
-              to={item.path}
-              className="flex items-center gap-3 text-gray-700 hover:text-blue-600 font-medium transition"
+            <button
+              onClick={() => setActiveTab(item.name)}
+              className="flex items-center gap-3 text-gray-700 hover:text-blue-600 font-medium transition w-full text-left"
             >
               {item.icon}
               <span>{item.name}</span>
-            </Link>
+            </button>
           </li>
         ))}
       </ul>
