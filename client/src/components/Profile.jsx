@@ -31,7 +31,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="w-80 bg-white rounded-xl shadow-lg p-4">
+    <div className="w-80 bg-white rounded-xl mt-7 p-4">
       {/* Profile Image */}
       <div className="flex flex-col items-center mb-4">
         <img

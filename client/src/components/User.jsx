@@ -1,28 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Profile from "./Profile"; // renamed Profile to ProfileDropdown to make purpose clearer
 
 function User() {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef();
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
 
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative mr-4">
       <div
         className="flex items-center gap-3 group cursor-pointer"
         onClick={toggleDropdown}

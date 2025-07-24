@@ -17,17 +17,6 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        <button className="bg-gradient-to-r from-pink-400 to-pink-500 text-white px-4 py-2 rounded-full hover:from-pink-500 hover:to-pink-600 transition">
-          ☕ Spill Your Tea
-        </button>
-
-        <div className="relative">
-          <FiBell className="text-xl text-blue-700 hover:text-pink-600 cursor-pointer" />
-          <span className="absolute -top-1 -right-1 text-xs bg-red-500 text-white px-1.5 rounded-full">
-            3
-          </span>
-        </div>
-
         <User />
       </div>
     </nav>
