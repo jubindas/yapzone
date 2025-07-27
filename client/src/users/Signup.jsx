@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Signup() {
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     username: "",
     email: "",
     password: "",
@@ -17,9 +18,23 @@ function Signup() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted with data:", formData);
+
+    try {
+      const resonse = await axios.post(
+        "http://localhost:5000/api/signup",
+        formData
+      );
+      console.log(resonse.data);
+      alert("Signup successful! You can now log in.");
+    } catch (error) {
+      console.error(
+        "Error during signup:",
+        error.response ? error.response.data : error.message
+      );
+      alert("Signup failed. Please try again.");
+    }
   };
 
   return (
@@ -31,7 +46,7 @@ function Signup() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
-            name="firstname"
+            name="firstName"
             value={formData.firstname}
             onChange={handleChange}
             placeholder="First Name"
@@ -40,7 +55,7 @@ function Signup() {
           />
           <input
             type="text"
-            name="lastname"
+            name="lastName"
             value={formData.lastname}
             onChange={handleChange}
             placeholder="Last Name"
