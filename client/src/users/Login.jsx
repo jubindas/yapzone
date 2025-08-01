@@ -26,7 +26,9 @@ function Login() {
       );
       console.log(response.data);
       alert("Login successful!");
-      // Redirect to the home page or dashboard after successful login
+
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
     } catch (error) {
       console.error(
         "Error during login:",
