@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Signup() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -28,6 +29,7 @@ function Signup() {
       );
       console.log(resonse.data);
       alert("Signup successful! You can now log in.");
+      navigate("/login");
     } catch (error) {
       console.error(
         "Error during signup:",
