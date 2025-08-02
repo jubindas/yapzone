@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Profile from "./Profile"; // renamed Profile to ProfileDropdown to make purpose clearer
 
 function User() {
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -21,8 +23,8 @@ function User() {
         />
 
         <div className="flex flex-col text-sm">
-          <span className="font-semibold text-blue-800">Jubin Rohidas</span>
-          <span className="text-gray-500">jubin@gmail.com</span>
+          <span className="font-semibold text-blue-800">{user.username}</span>
+          <span className="text-gray-500">{user.email}</span>
         </div>
       </div>
 
