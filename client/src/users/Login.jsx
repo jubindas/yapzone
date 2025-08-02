@@ -30,6 +30,7 @@ function Login() {
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("isLoggedIn", true);
       navigate("/home");
     } catch (error) {
       console.error(
